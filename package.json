@@ -1,0 +1,35 @@
+{
+  "name": "architect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server:build": "gulp",
+    "start:dev": "cross-env NODE_ENV=development supervisor ./build/app.js",
+    "test": "",
+    "start": "pm2 start",
+    "build": "",
+    "jsdocs": "jsdoc ./src/nodeui/**/*.js -d ./docs/jsdocs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "co": "^4.6.0",
+    "cross-env": "^5.2.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-watch": "^5.0.1",
+    "koa": "^2.7.0",
+    "koa-swig": "^2.2.1"
+  },
+  "dependencies": {
+    "jsdoc": "^3.5.5",
+    "koa-simple-router": "^0.2.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.11"
+  }
+}

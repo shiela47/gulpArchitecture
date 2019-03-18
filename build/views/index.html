@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>node后台模板页</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <h3>这是node后台模板页(swig模板)</h3>
+    <hr>
+    <h3>从indexController传过来的后台数据</h3>
+    <p>[[data]]</p>
+
+    <div id="app">
+        <p>{{ message }}</p>
+        <input v-model="message">
+        <button @click="reverseMsg">逆转消息</button>
+    </div>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.8/vue.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello 时光小溪!'
+            },
+            methods:{
+                reverseMsg:function(){
+                    this.message = this.message.split("").reverse().join("");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

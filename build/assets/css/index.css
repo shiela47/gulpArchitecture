@@ -1,0 +1,6 @@
+:root{
+    --mainColor:darkgoldenrod
+}
+body{
+    background-color: var(--mainColor)
+}
