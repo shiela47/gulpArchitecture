@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import path from 'path';
+const _ = require("lodash");
+const path = require("path");
 
 let config = {
     "viewDir": path.join(__dirname,"../views"),

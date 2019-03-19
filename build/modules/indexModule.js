@@ -4,9 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-// import { resolve } from "dns";
-// import {resolve,reject} from "any-promise";
-
 /**
  * @fileoverview 实现index数据模型
  * @author 1020044879@qq.com
@@ -23,12 +20,12 @@ class IndexModle {
    */
   constructor(app) {}
   /**
-       * 获取具体数据的API接口
-       * @returns {Promise} 返回异步数据
-       * @example
-       * return new Promise
-       * getDate()
-       */
+   * 获取具体数据的API接口
+   * @returns {Promise} 返回异步数据
+   * @example
+   * return new Promise
+   * getDate()
+   */
 
 
   getDate() {

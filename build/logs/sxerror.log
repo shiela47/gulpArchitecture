@@ -1,0 +1,11 @@
+[2019-03-19T15:41:05.152] [ERROR] cheese - ReferenceError: result is not defined
+    at /Users/shiguangxiaoxi/practices/architectOne/build/controlles/indexController.js:23:15
+    at dispatch (/Users/shiguangxiaoxi/practices/architectOne/node_modules/koa-simple-router/index.js:186:18)
+    at Router._lookup (/Users/shiguangxiaoxi/practices/architectOne/node_modules/koa-simple-router/index.js:198:12)
+    at /Users/shiguangxiaoxi/practices/architectOne/node_modules/koa-simple-router/index.js:138:21
+    at dispatch (/Users/shiguangxiaoxi/practices/architectOne/node_modules/koa-compose/index.js:42:32)
+    at app.use (/Users/shiguangxiaoxi/practices/architectOne/build/middlewares/errorHandler.js:23:13)
+    at dispatch (/Users/shiguangxiaoxi/practices/architectOne/node_modules/koa-compose/index.js:42:32)
+    at app.use (/Users/shiguangxiaoxi/practices/architectOne/build/middlewares/errorHandler.js:10:15)
+    at dispatch (/Users/shiguangxiaoxi/practices/architectOne/node_modules/koa-compose/index.js:42:32)
+    at /Users/shiguangxiaoxi/practices/architectOne/node_modules/koa-compose/index.js:34:12
