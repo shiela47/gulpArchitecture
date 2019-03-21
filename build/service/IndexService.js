@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", {
  * IndexModule类，生成一段异步数据
  * @class
  */
-class IndexModle {
+class IndexService {
   /**
    * @constructor
    * @param {string} app koa2上下文
@@ -31,11 +31,11 @@ class IndexModle {
   getDate() {
     return new Promise((resolve, reject) => {
       setTimeout(function () {
-        resolve("IndexAction异步数据，（by indexModule.js）");
+        resolve("IndexAction异步数据，（by IndexService.js）");
       }, 2000);
     });
   }
 
 }
 
-exports.default = IndexModle;
+exports.default = IndexService;

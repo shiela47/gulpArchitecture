@@ -14,7 +14,10 @@ gulp.task('builddev', () => {
             .pipe(babel({
                 // presets: ['@babel/env']    // 不需要转成es5
                 babelrc: false, // 关闭外面的，外面的babelrc留给web去用
-                "plugins": ["transform-es2015-modules-commonjs"]
+                "plugins": [
+                    "transform-es2015-modules-commonjs",
+                    ["@babel/plugin-proposal-decorators", { "legacy": true }]  // babel装饰器
+                ] 
             }))
             .pipe(gulp.dest('build'))
     })
@@ -25,7 +28,10 @@ gulp.task('buildprod', () => {
             .pipe(babel({
                 babelrc: false, // 关闭外面的babelrc，外面的babelrc留给web去用
                 ignore:['./src/nodeui/config/*.js'],    // 忽略
-                "plugins": ["transform-es2015-modules-commonjs"]
+                "plugins": [
+                    "transform-es2015-modules-commonjs",
+                    ["@babel/plugin-proposal-decorators", { "legacy": true }] 
+                ]
             }))
             .pipe(gulp.dest('build'))
 });

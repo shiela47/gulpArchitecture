@@ -8,14 +8,13 @@
  * @class
  */
 
-export default class IndexModle {
+export default class IndexService {
     /**
      * @constructor
      * @param {string} app koa2上下文
      */
-    constructor(app) {
-
-    }
+    constructor(app) {}
+    
     /**
      * 获取具体数据的API接口
      * @returns {Promise} 返回异步数据
@@ -27,7 +26,7 @@ export default class IndexModle {
     getDate() {
         return new Promise((resolve, reject) => {
             setTimeout(function () {
-                resolve("IndexAction异步数据，（by indexModule.js）");
+                resolve("IndexAction异步数据，（by IndexService.js）");
             }, 2000)
         })
     }

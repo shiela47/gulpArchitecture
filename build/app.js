@@ -12,10 +12,6 @@ var _config = require("./config");
 
 var _config2 = _interopRequireDefault(_config);
 
-var _controlles = require("./controlles");
-
-var _controlles2 = _interopRequireDefault(_controlles);
-
 var _koaSwig = require("koa-swig");
 
 var _koaSwig2 = _interopRequireDefault(_koaSwig);
@@ -36,6 +32,10 @@ var _log4js = require("log4js");
 
 var _log4js2 = _interopRequireDefault(_log4js);
 
+var _awilix = require("awilix");
+
+var _awilixKoa = require("awilix-koa");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _log4js2.default.configure({
@@ -55,22 +55,39 @@ _log4js2.default.configure({
 
 const logger = _log4js2.default.getLogger('cheese');
 
-const app = new _koa2.default();
+const app = new _koa2.default(); // 创建IOC容器
+
+const container = (0, _awilix.createContainer)(); // 每一次请求都创建一个独立的作用域(相当于new一次类)
+// 实现所有的service用切面的方式自动注入到controller
+
+app.use((0, _awilixKoa.scopePerRequest)(container)); // 装载service
+
+container.loadModules([__dirname + '/service/*.js'], {
+  formatName: "camelCase",
+  // 将第一个字母转为小写
+  resolverOptions: {
+    lifetime: _awilix.Lifetime.SCOPED // 生命周期
+
+  }
+});
 app.context.render = _co2.default.wrap((0, _koaSwig2.default)({
   root: _config2.default.viewDir,
   autoescape: true,
-  cache: false,
+  cache: 'memory',
   // memory or false
   ext: 'html',
-  varControls: ["[[", "]]"] //  跟vue语法起冲突处理
-
+  varControls: ["[[", "]]"],
+  //  跟vue语法起冲突处理
+  writeBody: false
 }));
 
 _errorHandler2.default.error(app, logger); //  容错处理
+// 自动注册所有的路由
 
 
-(0, _controlles2.default)(app, _koaSimpleRouter2.default); // 路由初始化
-
+app.use((0, _awilixKoa.loadControllers)('controlles/*.js', {
+  cwd: __dirname
+}));
 app.use((0, _koaStatic2.default)(_config2.default.staticDir));
 app.listen(_config2.default.port, () => {
   console.log(`服务之node、gulp架构启动，listening on ${_config2.default.port}`);
